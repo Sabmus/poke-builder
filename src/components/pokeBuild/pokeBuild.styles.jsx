@@ -16,8 +16,8 @@ export const DivPokeBuildContainer = styled.div`
   grid-template-columns: 1fr 2fr;
   border: 1px solid black;
   border-radius: ${borderRadius};
-  width: 610px;
-  height: 350px;
+  width: 750px;
+  height: 370px;
   padding: 5px;
   & .stat-list {
     ul {
@@ -45,7 +45,9 @@ export const DivPokeImage = styled.div`
 export const DivStatBuilder = styled.div`
   display: grid;
   grid-template-rows: repeat(6, 1fr);
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 255px repeat(3, 1fr);
+  align-items: center;
+  gap: 5px;
   padding: 5px 0px;
   border: 1px dotted rebeccapurple;
   border-radius: ${borderRadius};
@@ -59,6 +61,9 @@ export const DivExtraData = styled.div`
 `;
 
 export const DivStats = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   padding: 0px 5px;
   margin: 0px;
   border: 1px dotted rebeccapurple;
@@ -67,6 +72,9 @@ export const DivStats = styled.div`
 export const DivStatList = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background: ${(props) => props.linearGradient};
+  border-radius: 15px;
 `;
 
 export const DivExtraInfo1 = styled(BaseDiv)``;
