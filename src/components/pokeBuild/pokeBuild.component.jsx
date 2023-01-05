@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux";
+import { selectPokeStat } from "../../features/pokeStats/pokeStatsSlice";
+
 import StatBuilder from "../../components/statBuilder/statBuilder.component";
 
 import {
@@ -12,23 +15,24 @@ import {
 } from "./pokeBuild.styles";
 
 const PokeBuild = ({ pokemon }) => {
+  const pokeStats = useSelector(selectPokeStat);
+
   console.log(pokemon);
   return (
     <DivPokeBuildContainer>
       <DivPokeImage imageUrl={`${pokemon.sprites.front_default}`} />
       <DivStatBuilder>
-        <StatBuilder />
-        <StatBuilder />
-        <StatBuilder />
-        <StatBuilder />
-        <StatBuilder />
-        <StatBuilder />
+        {pokemon.stats.map((poke, id) => (
+          <StatBuilder key={id} idx={id} stat={pokeStats.stats[id]} />
+        ))}
       </DivStatBuilder>
       <DivStats>
-        {pokemon.stats.map((poke) => (
+        {pokemon.stats.map((poke, id) => (
           <DivStatList key={poke.stat.name}>
             <span>{poke.stat.name}</span>
-            <span>{poke.base_stat}</span>
+            <span>
+              {poke.base_stat + Math.trunc(pokeStats.stats[id].value / 4)}
+            </span>
           </DivStatList>
         ))}
       </DivStats>
