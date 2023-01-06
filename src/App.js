@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        <Route path="/*" element={<Poke />} />
+        <Route path="poke-builder/*" element={<Poke />} />
       </Route>
     </Routes>
   );

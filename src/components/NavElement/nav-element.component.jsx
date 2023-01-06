@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavElement = ({ poke }) => {
   const Capitalize = (word) => {
@@ -7,7 +7,7 @@ const NavElement = ({ poke }) => {
 
   return (
     <li>
-      <NavLink to={`/${poke.name}`}>{Capitalize(poke.name)}</NavLink>
+      <Link to={`/poke-builder/${poke.name}`}>{Capitalize(poke.name)}</Link>
     </li>
   );
 };
