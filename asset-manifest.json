@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pokebuilder/static/css/main.9c746db8.css",
+    "main.js": "/pokebuilder/static/js/main.c809a5ea.js",
+    "static/js/787.ddb64626.chunk.js": "/pokebuilder/static/js/787.ddb64626.chunk.js",
+    "index.html": "/pokebuilder/index.html",
+    "main.9c746db8.css.map": "/pokebuilder/static/css/main.9c746db8.css.map",
+    "main.c809a5ea.js.map": "/pokebuilder/static/js/main.c809a5ea.js.map",
+    "787.ddb64626.chunk.js.map": "/pokebuilder/static/js/787.ddb64626.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c746db8.css",
+    "static/js/main.c809a5ea.js"
+  ]
+}
