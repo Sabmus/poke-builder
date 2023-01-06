@@ -20,6 +20,9 @@ import {
   DivLvlInput,
 } from "./pokeBuild.styles";
 
+// constant
+const maxEvValue = 510;
+
 const PokeBuild = ({ pokemon }) => {
   const dispatch = useDispatch();
   const pokeStats = useSelector(selectPokeStat);
@@ -29,6 +32,7 @@ const PokeBuild = ({ pokemon }) => {
   };
 
   console.log(pokemon);
+
   return (
     <DivPokeBuildContainer>
       <DivPokeImage imageUrl={`${pokemon.sprites.front_default}`}>
@@ -57,7 +61,7 @@ const PokeBuild = ({ pokemon }) => {
           <DivStatList
             key={poke.stat.name}
             linearGradient={`linear-gradient(to right, goldenrod ${
-              (pokeStats.stats[id].ev / 510) * 100 * 2
+              (pokeStats.stats[id].ev / maxEvValue) * 100 * 2 // 100: to show percentage from 1 to 100, 2: can be 2 ev at 100%
             }%, transparent 0px)`}
           >
             <span style={{ paddingLeft: "10px" }}>{poke.stat.name}</span>

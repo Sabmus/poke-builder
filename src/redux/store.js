@@ -1,12 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import counterReducer from "../features/counter/counterSlice";
 import searchReducer from "../features/search-bar/searchSlice";
 import pokeStatReducer from "../features/pokeStats/pokeStatsSlice";
+import pokedexReducer from "../features/pokedex/pokedexSlice";
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
   search: searchReducer,
+  pokedex: pokedexReducer,
   pokeStat: pokeStatReducer,
 });
 

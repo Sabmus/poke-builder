@@ -1,33 +1,48 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Search from "../../components/search/search.component";
 import Navbar from "../../components/NavBar/navbar.component";
 import NavElement from "../../components/NavElement/nav-element.component";
+import Spinner from "../../components/spinner/spinner.component";
 
-import { useSelector } from "react-redux";
+import {
+  currentStatus,
+  currentData,
+  fetchPokemonList,
+} from "../../features/pokedex/pokedexSlice";
+
 import { selectSearch } from "../../features/search-bar/searchSlice";
 
-import pokes from "../../assets/pokes.json";
-
 const Root = () => {
+  const dispatch = useDispatch();
+  const pokedexStatus = useSelector(currentStatus);
+  const pokeData = useSelector(currentData);
+
+  useEffect(() => {
+    if (pokedexStatus === "idle") {
+      dispatch(fetchPokemonList());
+    }
+  }, [pokedexStatus, dispatch]);
+
   const search = useSelector(selectSearch);
 
   return (
     <>
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
+        <h1>React Router Dom</h1>
         <div>
           <Search />
         </div>
         <Navbar>
-          {pokes
-            .slice(0, 151)
-            .filter((poke) =>
-              poke.identifier.toLowerCase().includes(search.toLowerCase())
-            )
-            .map((poke) => (
-              <NavElement key={poke.id} poke={poke} />
-            ))}
+          {pokedexStatus === "loading" ? (
+            <Spinner />
+          ) : (
+            pokeData
+              .filter((poke) => poke.name.includes(search.toLowerCase()))
+              .map((poke) => <NavElement key={poke.name} poke={poke} />)
+          )}
         </Navbar>
       </div>
       <div id="detail">

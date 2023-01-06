@@ -7,9 +7,7 @@ const NavElement = ({ poke }) => {
 
   return (
     <li>
-      <NavLink to={`/${poke.identifier}`}>
-        {Capitalize(poke.identifier)}
-      </NavLink>
+      <NavLink to={`/${poke.name}`}>{Capitalize(poke.name)}</NavLink>
     </li>
   );
 };

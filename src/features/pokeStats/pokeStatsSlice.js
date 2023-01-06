@@ -1,48 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initState = {
+  maxEv: 510,
+  pokeLvl: 100,
+  stats: [
+    {
+      name: "hp",
+      ev: 0,
+      iv: 31,
+    },
+    {
+      name: "atk",
+      ev: 0,
+      iv: 31,
+      nature: 1.0,
+    },
+    {
+      name: "def",
+      ev: 0,
+      iv: 31,
+      nature: 1.0,
+    },
+    {
+      name: "spAtk",
+      ev: 0,
+      iv: 31,
+      nature: 1.0,
+    },
+    {
+      name: "spDef",
+      ev: 0,
+      iv: 31,
+      nature: 1.0,
+    },
+    {
+      name: "spe",
+      ev: 0,
+      iv: 31,
+      nature: 1.0,
+    },
+  ],
+};
+
 export const pokeStatSlice = createSlice({
   name: "pokeStat",
-  initialState: {
-    maxEv: 510,
-    pokeLvl: 100,
-    stats: [
-      {
-        name: "hp",
-        ev: 0,
-        iv: 31,
-      },
-      {
-        name: "atk",
-        ev: 0,
-        iv: 31,
-        nature: 1.0,
-      },
-      {
-        name: "def",
-        ev: 0,
-        iv: 31,
-        nature: 1.0,
-      },
-      {
-        name: "spAtk",
-        ev: 0,
-        iv: 31,
-        nature: 1.0,
-      },
-      {
-        name: "spDef",
-        ev: 0,
-        iv: 31,
-        nature: 1.0,
-      },
-      {
-        name: "spe",
-        ev: 0,
-        iv: 31,
-        nature: 1.0,
-      },
-    ],
-  },
+  initialState: initState,
   reducers: {
     modifyStat: (state, action) => {
       const { ev, statId } = action.payload;
@@ -69,10 +71,15 @@ export const pokeStatSlice = createSlice({
       const { natureMultiplier, statId } = action.payload;
       state.stats[statId].nature = natureMultiplier;
     },
+    resetState: (state) => {
+      state.maxEv = initState.maxEv;
+      state.pokeLvl = initState.pokeLvl;
+      state.stats = initState.stats;
+    },
   },
 });
 
-export const { modifyStat, modifyIv, modifyLvl, modifyNature } =
+export const { modifyStat, modifyIv, modifyLvl, modifyNature, resetState } =
   pokeStatSlice.actions;
 export const selectPokeStat = (state) => state.pokeStat;
 
