@@ -17,7 +17,7 @@ export const DivPokeBuildContainer = styled.div`
   border: 1px solid black;
   border-radius: ${borderRadius};
   width: 750px;
-  height: 370px;
+  height: 400px;
   padding: 5px;
   & .stat-list {
     ul {
@@ -40,6 +40,7 @@ export const DivPokeImage = styled.div`
   background-position: center;
   border: 1px dotted rebeccapurple;
   border-radius: ${borderRadius};
+  position: relative;
 `;
 
 export const DivStatBuilder = styled.div`
@@ -79,3 +80,19 @@ export const DivStatList = styled.div`
 
 export const DivExtraInfo1 = styled(BaseDiv)``;
 export const DivExtraInfo2 = styled(BaseDiv)``;
+
+export const InputStat = styled.input`
+  width: 60px;
+  height: 20px;
+  line-height: 10px;
+  padding-left: 7px;
+  font-size: 11px;
+  margin: 0px;
+  border: 1px dotted goldenrod;
+`;
+
+export const DivLvlInput = styled.span`
+  position: absolute;
+  top: 200px;
+  left: 158px;
+`;

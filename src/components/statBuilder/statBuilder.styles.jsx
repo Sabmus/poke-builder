@@ -14,3 +14,16 @@ export const InputStat = styled.input`
   font-size: 11px;
   margin: 0px;
 `;
+
+export const SpanStatName = styled.span`
+  padding-left: 4px;
+  margin: 0px;
+`;
+
+export const SpanNature = styled.span`
+  user-select: none;
+  font-size: 18px;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+`;

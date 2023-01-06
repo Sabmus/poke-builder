@@ -1,7 +1,11 @@
-import { useSelector } from "react-redux";
-import { selectPokeStat } from "../../features/pokeStats/pokeStatsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectPokeStat,
+  modifyLvl,
+} from "../../features/pokeStats/pokeStatsSlice";
 
 import StatBuilder from "../../components/statBuilder/statBuilder.component";
+import { StatCalculator } from "../../utils/statCalculator";
 
 import {
   DivPokeBuildContainer,
@@ -12,15 +16,33 @@ import {
   DivStatList,
   DivExtraInfo1,
   DivExtraInfo2,
+  InputStat,
+  DivLvlInput,
 } from "./pokeBuild.styles";
 
 const PokeBuild = ({ pokemon }) => {
+  const dispatch = useDispatch();
   const pokeStats = useSelector(selectPokeStat);
+
+  const onChangeLvlHandler = (event) => {
+    dispatch(modifyLvl(parseInt(event.target.value)));
+  };
 
   console.log(pokemon);
   return (
     <DivPokeBuildContainer>
-      <DivPokeImage imageUrl={`${pokemon.sprites.front_default}`} />
+      <DivPokeImage imageUrl={`${pokemon.sprites.front_default}`}>
+        <DivLvlInput>
+          <label style={{ paddingRight: "5px" }}>lvl</label>
+          <InputStat
+            type="number"
+            min={1}
+            max={100}
+            defaultValue={100}
+            onChange={onChangeLvlHandler}
+          />
+        </DivLvlInput>
+      </DivPokeImage>
       <DivStatBuilder>
         {pokemon.stats.map((poke, id) => (
           <StatBuilder
@@ -34,13 +56,20 @@ const PokeBuild = ({ pokemon }) => {
         {pokemon.stats.map((poke, id) => (
           <DivStatList
             key={poke.stat.name}
-            linearGradient={`linear-gradient(to right, lightcoral ${
-              (pokeStats.stats[id].value / 510) * 100 * 2
+            linearGradient={`linear-gradient(to right, goldenrod ${
+              (pokeStats.stats[id].ev / 510) * 100 * 2
             }%, transparent 0px)`}
           >
             <span style={{ paddingLeft: "10px" }}>{poke.stat.name}</span>
             <span>
-              {poke.base_stat + Math.trunc(pokeStats.stats[id].value / 4)}
+              {StatCalculator(
+                poke.base_stat,
+                pokeStats.stats[id].iv,
+                pokeStats.stats[id].ev,
+                pokeStats.pokeLvl,
+                pokeStats.stats[id].nature,
+                id === 0 && true
+              )}
             </span>
           </DivStatList>
         ))}
