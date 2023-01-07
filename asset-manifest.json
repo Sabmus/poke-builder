@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/poke-builder/static/css/main.9c746db8.css",
-    "main.js": "/poke-builder/static/js/main.562bef8c.js",
+    "main.css": "/poke-builder/static/css/main.fcd5d42a.css",
+    "main.js": "/poke-builder/static/js/main.e2ba4777.js",
     "static/js/787.ddb64626.chunk.js": "/poke-builder/static/js/787.ddb64626.chunk.js",
     "index.html": "/poke-builder/index.html",
-    "main.9c746db8.css.map": "/poke-builder/static/css/main.9c746db8.css.map",
-    "main.562bef8c.js.map": "/poke-builder/static/js/main.562bef8c.js.map",
+    "main.fcd5d42a.css.map": "/poke-builder/static/css/main.fcd5d42a.css.map",
+    "main.e2ba4777.js.map": "/poke-builder/static/js/main.e2ba4777.js.map",
     "787.ddb64626.chunk.js.map": "/poke-builder/static/js/787.ddb64626.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c746db8.css",
-    "static/js/main.562bef8c.js"
+    "static/css/main.fcd5d42a.css",
+    "static/js/main.e2ba4777.js"
   ]
 }
