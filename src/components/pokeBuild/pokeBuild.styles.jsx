@@ -79,7 +79,102 @@ export const DivStatList = styled.div`
 `;
 
 export const DivExtraInfo1 = styled(BaseDiv)``;
-export const DivExtraInfo2 = styled(BaseDiv)``;
+export const DivExtraInfo2 = styled(BaseDiv)`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-left: 5px;
+
+  & .type {
+    border-radius: 5px;
+    padding: 0px 3px;
+    border: 1px solid goldenrod;
+    color: white;
+
+    &:hover {
+      text-shadow: 0 0 5px #ffffff;
+    }
+  }
+
+  //all types
+  & .normal {
+    background-color: whitesmoke;
+    color: black;
+  }
+
+  & .flying {
+    background-color: lightskyblue;
+    color: black;
+  }
+
+  & .fire {
+    background-color: red;
+  }
+
+  & .water {
+    background-color: blueviolet;
+  }
+
+  & .poison {
+    background-color: darkorchid;
+  }
+
+  & .bug {
+    background-color: darkolivegreen;
+    opacity: 0.9;
+  }
+
+  & .electric {
+    background-color: goldenrod;
+  }
+
+  & .ground {
+    background-color: darkkhaki;
+  }
+
+  & .fairy {
+    background-color: palevioletred;
+  }
+
+  & .grass {
+    background-color: darkgreen;
+  }
+
+  & .fighting {
+    background-color: burlywood;
+  }
+
+  & .dragon {
+    background-color: darkorchid;
+  }
+
+  & .psychic {
+    background-color: rebeccapurple;
+  }
+
+  & .rock {
+    background-color: lightgray;
+  }
+
+  & .steel {
+    background-color: steelblue;
+  }
+
+  & .ice {
+    background-color: lightblue;
+    color: white;
+  }
+
+  & .ghost {
+    background-color: violet;
+    color: white;
+  }
+
+  & .dark {
+    background-color: black;
+    color: white;
+  }
+`;
 
 export const InputStat = styled.input`
   width: 60px;
@@ -93,6 +188,9 @@ export const InputStat = styled.input`
 
 export const DivLvlInput = styled.span`
   position: absolute;
-  top: 200px;
+  margin: 0px;
+  padding: 0px;
   left: 158px;
+  background-color: white;
+  border-radius: 15px;
 `;

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const limitDataItems = 151;
+const limitDataItems = 350;
 
 const initialState = {
   pokemons: [],

@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import {
+  fetchPokemonData,
+  currentStatus,
+  pokemonCurrentData,
+} from "../../features/pokemon/pokemonSlice";
 import { resetState } from "../../features/pokeStats/pokeStatsSlice";
 
 import PokeBuild from "../../components/pokeBuild/pokeBuild.component";
@@ -10,30 +15,22 @@ import Spinner from "../../components/spinner/spinner.component";
 const PokeCard = () => {
   const dispatch = useDispatch();
   const { pokeQ } = useParams();
-  const [pokeData, setPokeData] = useState({});
+
+  const pokeData = useSelector(pokemonCurrentData);
+  const currentPokeStatus = useSelector(currentStatus);
 
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokeQ}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("failed fetching", response.status);
-        }
-      })
-      .then((data) => setPokeData({ pokeData: data }))
-      .catch((error) => console.log(error));
+    dispatch(fetchPokemonData(pokeQ));
 
     dispatch(resetState());
-    // eslint-disable-next-line
-  }, [pokeQ]);
+  }, [pokeQ, dispatch]);
 
   return (
     <div>
-      {Object.keys(pokeData).length === 0 ? (
+      {currentPokeStatus === "loading" ? (
         <Spinner />
       ) : (
-        <PokeBuild key={pokeData.pokeData.id} pokemon={pokeData.pokeData} />
+        <PokeBuild key={pokeData.id} pokemon={pokeData} />
       )}
     </div>
   );

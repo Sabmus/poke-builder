@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { CapitalizeWord } from "../../utils/utils";
 
 const NavElement = ({ poke }) => {
-  const Capitalize = (word) => {
-    return word[0].toUpperCase() + word.substring(1);
-  };
-
   return (
     <li>
-      <Link to={`/poke-builder/${poke.name}`}>{Capitalize(poke.name)}</Link>
+      <NavLink to={`/poke-builder/${poke.name}`}>
+        {CapitalizeWord(poke.name)}
+      </NavLink>
     </li>
   );
 };

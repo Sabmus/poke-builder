@@ -31,7 +31,16 @@ const Root = () => {
   return (
     <>
       <div id="sidebar">
-        <h1>React Router Dom</h1>
+        <h1>
+          <a
+            href="https://reactrouter.com/en/main"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span></span>
+          </a>{" "}
+          Poke Builder
+        </h1>
         <div>
           <Search />
         </div>
